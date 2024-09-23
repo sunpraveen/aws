@@ -1,0 +1,13 @@
+---
+  - hosts: localhost
+    gather_facts: False
+    vars:
+      #ec2_region: "{{ aws_region | default('us-east-2') }}"
+
+    tasks:
+      - name: Get all VPC Info
+        amazon.aws.ec2_vpc_net_info:
+            #region: "{{ec2_region}}"
+        register: all_vpcs
+      
+      - debug: var=all_vpcs
